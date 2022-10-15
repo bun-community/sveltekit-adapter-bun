@@ -697,10 +697,18 @@ function get_origin(headers) {
 const hostname = env('HOST', '0.0.0.0');
 const port = parseInt(env('PORT', 3000));
 console.info(`Listening on ${hostname + ':' + port}`);
-serve$1({
-    baseURI: env('ORIGIN', undefined),
-    fetch: handler(build_options.assets ?? true),
-    hostname,
-    port,
-    development: env("SERVERDEV", build_options.development ?? false)
-});
+
+let serveOptions = {
+  baseURI: env('ORIGIN', undefined),
+  fetch: handler(build_options.assets ?? true),
+  hostname,
+  port,
+  development: env("SERVERDEV", build_options.development ?? false),
+};
+
+if(server.options.hooks.handleWebsocket) {
+  serveOptions.websocket = server.options.hooks.handleWebsocket;
+}
+
+
+serve$1(serveOptions);

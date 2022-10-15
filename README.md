@@ -31,6 +31,18 @@ cd build/
 bun run start
 ```
 
+
+### Exposed Websocket Server
+You can use buns websocket server by exporting handleWebsocket object from src/hooks.server.ts
+```typescript
+export const handleWebsocket = {
+    message: (ws, msg) => {
+        ws.send(msg);
+    }
+}
+```
+
+
 ## Options
 
 The adapter can be configured with various options:
