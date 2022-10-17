@@ -1,7 +1,7 @@
 {
   "name": "@bun-community/sveltekit-adapter-bun",
   "description": "Adapter for SvelteKit apps that generates a standalone Bun.js server.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "type": "module",
   "dependencies": {

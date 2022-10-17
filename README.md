@@ -38,6 +38,10 @@ You can use buns websocket server by exporting handleWebsocket object from src/h
 export const handleWebsocket = {
     message: (ws, msg) => {
         ws.send(msg);
+    },
+    //optionally, doesnt have to be set - can be used to deny websocket
+    upgrade: (req, upgrade) => {
+        upgrade(req, {data:1});
     }
 }
 ```
