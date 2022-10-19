@@ -48,7 +48,7 @@ export default function (opts = {}) {
 
             const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
 
-
+            let src = readFileSync(`${tmp}/index.js`, 'utf8');
             const regex = /(this\.options\.hooks\s+=\s+{)\s+(handle:)/gm;
             const subst = `$1 \n\t\thandleWebsocket: module.handleWebsocket || null,\n\t\t$2`;
             const result = src.replace(regex, subst);
