@@ -714,7 +714,7 @@ if(server.options.hooks.handleWebsocket) {
   let origFetch = serveOptions.fetch;
   serveOptions.websocket = server.options.hooks.handleWebsocket;
   serveOptions.fetch = (req, srv) => {
-    if(req.headers.get('Connection').toLowerCase() === 'upgrade' && req.headers.get('Upgrade').toLowerCase() === 'websocket') {
+    if(req.headers.get('Connection')?.toLowerCase() === 'upgrade' && req.headers.get('Upgrade')?.toLowerCase() === 'websocket') {
       (server.options.hooks.handleWebsocket.upgrade ?? defaultAcceptWebsocket)(req, srv.upgrade.bind(srv));
       return;
     }
