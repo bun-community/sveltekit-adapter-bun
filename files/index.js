@@ -710,7 +710,7 @@ function defaultAcceptWebsocket(request, upgrade) {
   return upgrade(request);
 }
 
-if(server.options.hooks.handleWebsocket) {
+if(server.options?.hooks?.handleWebsocket) {
   let origFetch = serveOptions.fetch;
   serveOptions.websocket = server.options.hooks.handleWebsocket;
   serveOptions.fetch = (req, srv) => {
